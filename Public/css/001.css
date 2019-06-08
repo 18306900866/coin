@@ -1,0 +1,52 @@
+@media only screen and (max-width: 600px){
+	.table td{
+		padding: 3px  0 !important;
+	}
+	.txjl{
+		padding: 35px 0px;
+	}
+	.form-group.txjl_form-group_select_tongxiu{
+		margin-left: 15px;
+	}
+	.form-group.txjl_form-group_select_tongxiu{
+		width: 90% !important;
+	}
+	.je_boots_s{
+		width: 90% !important;
+	}
+	.je_boots_ssss_c{
+		width: 270px !important;
+	}
+	.jp_top_jine{
+	display: inline-block;
+}
+
+}
+.jp_top_jine{
+	display: none;
+}
+i.sorting_ascss{
+	cursor: pointer;
+	margin-top: 3px;
+	vertical-align: middle;
+	float: right;
+	display: inline-block;
+	width: 15px;
+	height: 10px;
+}
+.sorting_ascss{
+	background: url(../img/sort_dzong.png) no-repeat center;
+	background-color: #1ab394;
+	background-size: 7px 17px;
+}
+.sorting_ascss.on{
+	background: url(../img/sort_desc.png) no-repeat center;
+	background-color: #1ab394;
+	background-size: 7px 7px;
+}
+.sorting_ascss.tw{
+	background: url(../img/sort_asc.png) no-repeat center;
+	background-color: #1ab394;
+	background-size: 7px 7px;
+}
+

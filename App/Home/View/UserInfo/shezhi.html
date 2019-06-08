@@ -1,0 +1,71 @@
+<include file="Common:header"/>
+
+	<body class="has_menu has_header">
+		
+		<div class="top_header">
+			<a class="back"><img src="__ROOT__/Public/oxc/img/back_icon.jpg"/></a>
+			<h3>设置</h3>
+		</div>
+		
+		<div class="user_list user_list2" style="margin-top: .2rem;">
+			<ul>
+				<!-- <li>
+					<table>
+						<tr class="a_href" data-href="/home/UserInfo/editps">
+							<td>修改密码</td>
+							<td><img src="__ROOT__/Public/oxc/img/arr.png"/></td>
+						</tr>
+					</table>
+				</li>
+				<li>
+					<table>
+						<tr class="a_href" data-href="/home/UserInfo/moneypasz">
+							<td>资金修改密码</td>
+							<td><img src="__ROOT__/Public/oxc/img/arr.png"/></td>
+						</tr>
+					</table>
+				</li> -->
+				<!-- <li>
+					<table>
+						<tr class="a_href" data-href="/home/UserInfo/guanyu">
+							<td>关于我们</td>
+							<td><img src="__ROOT__/Public/oxc/img/arr.png"/></td>
+						</tr>
+					</table>
+				</li> -->
+				<li>
+					<table>
+						<tr>
+							<td>版本1.5.2</td>
+							<td></td>
+						</tr>
+					</table>
+				</li>
+			</ul>
+		</div>
+		
+		<a class="blue_btn logout" style="margin-top: 1rem;">退出登陆</a>
+		
+	</body>
+
+<include file="Common:footer"/>
+	<script type="text/javascript">
+		$(".logout").click(function(){
+			var urlcel = '/home/UserInfo/logout';
+			var data = {
+			};
+			ajaxone(urlcel,data);
+		});
+
+
+		function ajaxonef(res){
+			console.log(res);
+			if(res.code == 400){
+				alert(res.msg);
+			}else{
+				window.location.replace(res.msg);
+			}
+		}
+	</script>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="__ROOT__/Public/js/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="__ROOT__/Public/js/recharge.js"></script>
+    <link rel="stylesheet" href="__ROOT__/Public/css/recharge.css">
+</head>
+
+<body>
+<div id="windows">
+    <div class="tit">充值扣款界面</div>
+    <div class="class">
+        <div class="name">用户ID:</div><input type="text" class="input" id="user" maxlength="11" />
+        <span id="span_m"></span>
+    </div>
+    <div class="class"><div class="name">金额(余点/元):</div><input type="text" class="input" id="money" maxlength="8"  /></div>
+    <div>
+        <br/><br/>
+        <div class="name" style="width: 60px">类型:</div>
+        <div class="labels">
+            <label class="demo--label">
+                <input class="demo--radio" type="radio" name="dradio" value="系统充值">
+                <span class="demo--radioInput"></span>系统充值
+            </label>
+            <label class="demo--label">
+                <input class="demo--radio" type="radio" name="dradio" value="系统扣款">
+                <span class="demo--radioInput"></span>系统扣款
+            </label>
+        </div>
+    </div>
+    <br/>
+    <div id="bus" style="margin-top:90px">提交</div>
+</div>
+</body>
+</html>
+

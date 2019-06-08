@@ -1,0 +1,62 @@
+	<script src="__ROOT__/Public/oxc/js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__ROOT__/Public/oxc/swiper/4.1/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__ROOT__/Public/oxc/js/common.js" type="text/javascript" charset="utf-8"></script>
+
+	<script type="text/javascript">
+		$(".a_href").click(function(){
+			window.location.href = $(this).attr('data-href');
+			
+		});
+
+		//ajax公共方法(只传参数访问)
+		function ajaxone(urlcel,data){
+			$.ajax({
+				dataType: 'json',
+				type: "post",
+				url: urlcel,
+				data: data,
+				cache: false,
+				success: function(res) {
+					// goo(res);
+					ajaxonef(res);
+					// console.log(res);
+					// return ajaxonef(res);
+				},
+				error: function(error){
+					console.log(error);
+				}
+			});
+		}
+
+		$(".back").click(function(){
+			window.history.back(-1)
+		});
+
+		function timer(intDiff){
+		    window.setInterval(function(){
+		    if(intDiff < 0){
+		    	$('.coding').html('获取验证码');
+		    	return;
+		    }
+		    var day=0,
+		        hour=0,
+		        minute=0,
+		        second=0;//时间默认值
+		    if(intDiff > 0){
+		        day = Math.floor(intDiff / (60 * 60 * 24));
+		        hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+		        minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+		        second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+		    }
+		    if (minute <= 9) minute = '0' + minute;
+		    if (second <= 9) second = '0' + second;
+		    // $('#day_show').html(day+"天");
+		    // $('#hour_show').html('<s id="h"></s>'+hour+'时');
+		    // $('#minute_show').html('<s></s>'+minute+'分');
+		    $('.coding').html(second+'s');
+		    intDiff--;
+		    }, 1000);
+		};
+
+
+	</script>

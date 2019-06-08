@@ -1,0 +1,63 @@
+<include file="Common:header"/>
+
+<body class="has_menu has_header">
+	
+	<div class="top_header">
+		<a class="back"><img src="__ROOT__/Public/oxc/img/back_icon.jpg"/></a>
+		<h3>消费记录</h3>
+	</div>
+
+
+<div class="jy_date_list">
+	<table>
+		<thead>
+		<tr>
+			<td>类型</td>
+			<td>余额</td>
+			<td>消费</td>
+			<td>时间</td>
+		</tr>
+		</thead>
+
+		<tbody>
+
+		<volist name="list" id="arr">
+
+			<tr>
+
+				<td>{$arr.type}</td>
+				<td>{$arr.money}</td>
+				<if condition="$arr.types eq 1 ">
+					<td class="green_font">{$arr.change}</td>
+					<else />
+					<td class="red_font">{$arr.change}</td>
+				</if>
+				<!-- <td>{$arr.change}</td> -->
+				<td>{$arr.time}</td>
+
+			</tr>
+
+		</volist>
+		</tbody>
+	</table>
+</div>
+
+<include file="Common:menu"/>
+
+</body>
+
+
+<include file="Common:footer"/>
+<script type="text/javascript">
+
+	$("#show_more_coin").on('click',function(){
+		if($(".chose_coin").hasClass('on')){
+			$(".chose_coin").removeClass('on');
+		}else{
+			$(".chose_coin").addClass('on');
+		}
+	})
+
+</script>
+
+</html>

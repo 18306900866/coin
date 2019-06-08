@@ -1,0 +1,130 @@
+/*清除浮动*/
+.clear {clear: both;}
+.clearfix:after {clear:both; content:'';display: block;font-size: 0;line-height: 0;visibility: hidden;	width: 0;height: 0;}
+.clearfix {+display: inline-block;}
+* html .clearfix {height: 1%;}
+.fl{float: left !important;}
+.fr{float: right !important;}
+.txtHide{overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+
+.balance{
+	min-width: 100px;
+	display: inline-block;
+	height: 30px;
+	padding: 0 15px;
+	line-height: 30px;
+	color: #FFFFEE;
+	text-align: center;
+	background: #1ab394;
+	margin: 14px 5px 5px 20px;
+	border-radius: 3px;
+	
+}
+.navbar-header{
+	width: 70%;
+}
+.navbar-form-custom.top_nav{
+	width: auto;
+	line-height: 50px;
+}
+.select_top_nav{
+	line-height: 30px;
+	height: 30px;
+	border-radius: 3px;
+	margin: 14px 0px 0px 20px;
+	display: inline-block;
+	border: 1px solid #008000;
+}
+.zijing{
+	font-size: 18px;
+	padding-left: 5px;
+}
+.txjl{
+	padding: 35px 20px;
+}
+.form-group.txjl_form-group_select_tongxiu{
+	width: 350px;
+	float: left;
+	margin-left: 20px;
+	padding-bottom: 0px;
+	
+}
+.vertical_al_midd{
+	vertical-align: middle;
+}
+.margin_top20{
+	margin-top: 20px;
+}
+@media only screen and (min-width: 1100px) and (max-width: 1500px) {
+	.txjl{
+		max-width: 1100px;
+	}
+}
+@media only screen and (max-width: 1199px) {
+	.txjl{
+		/*max-width: 600px;*/
+	}
+}
+.input_border_ra{
+	border-radius: 5px;
+}
+.tabale_txjl{
+	padding: 15px 35px;
+}
+.tabale_txjl tbody tr td {
+	border: 1px solid #000000;
+}
+.tabale_txjl thead td{
+	background-color: #1ab394;
+	color: #FFFFFF;
+	border-bottom: 1px solid #000000;
+}
+.tabale_txjl .table{
+	border: 1px solid  #1ab394;
+}
+.tabale_txjl .table thead td{
+	border-right: 1px solid #FFFFFF;
+}
+.tabale_txjl .table thead td:last-child{
+	border-right: 1px solid #1ab394;
+}
+.Statistics:hover{
+	opacity: 1;
+	-webkit-transition: all 2s;
+	-moz-transition: all 2s;
+	-ms-transition: all 2s;
+	-o-transition: all 2s;
+	transition: all 2s;;
+}
+.Statistics{
+	position: fixed;
+	top: 88%;
+	right: 1%;
+	border: 50px;
+	z-index: 9999;
+	opacity: 0.5;
+	width: auto;
+	height: auto;
+	margin-left: 25px;
+	background-color: #1ab394;
+	border: 1px solid #1ab394;
+	border-radius: 6px;
+	
+}
+.Statistics #day,#week,#month{
+	border-right: 1px solid #1ab394;
+	background-color: #1ab394;
+	color: #FFFFFF;
+	font-size: 18px;
+	width: auto;
+	padding: 0 5px
+}
+.Statistics font{
+	color: #FFFFFF;
+	font-size: 14px;
+}
+@media only screen and (min-width: 1199px) {
+	.Statistics{
+		margin-top: 20px;
+	}
+}

@@ -1,0 +1,74 @@
+<include file="Common:header"/>
+<style type="text/css">
+	.form_input .inputbox input {
+	    width: 100%;
+	    height: .7rem;
+	    padding: 0 .15rem;
+	    background: #fff; 
+	    font-size: .23rem;
+	}
+</style>
+	<body class="has_menu has_header">
+		
+		<div class="top_header">
+			<a class="back"><img src="__ROOT__/Public/oxc/img/back_icon.jpg"/></a>
+			<h3>修改密码</h3>
+		</div>
+		
+		<div class="form_input " style="margin-top: .2rem;">
+			<ul>
+				<li>
+					<p class="tl1">原密码</p>
+					<div class="inputbox">
+						<input type="password" name="" class="pass" id="" value="" placeholder="原密码"/>
+					</div>
+				</li>
+				<li>
+					<p class="tl1">新密码</p>
+					<div class="inputbox">
+						<input type="password" name="" class="pass_new" id="" value="" placeholder="请输入新密码"/>
+					</div>
+				</li>
+				<li>
+					<p class="tl1">重复新密码</p>
+					<div class="inputbox">
+						<input type="password" name="" class="pass_new_con" id="" value="" placeholder="再次输入新密码"/>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		
+		<a class="blue_btn passedit" style="margin-top: 1rem;">确定</a>
+		
+	</body>
+
+<include file="Common:footer"/>
+	<script type="text/javascript">
+		$(".passedit").click(function(){
+
+			var pass = $('.pass').val();//选中的值
+            var pass_new = $('.pass_new').val();//选中的值
+            var pass_new_con = $('.pass_new_con').val();//选中的值
+			var urlcel = '/home/UserInfo/passedit';
+			var data = {
+				pass:pass,
+				pass_new:pass_new,
+				pass_new_con:pass_new_con
+			};
+			ajaxone(urlcel,data);
+		});
+
+
+		function ajaxonef(res){
+			console.log(res);
+			if(res.code == 400){
+				alert(res.msg);
+			}else{
+				alert('修改成功！');
+				window.location.replace(res.msg);
+			}
+		}
+	</script>
+
+</html>

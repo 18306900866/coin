@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <title></title>
+
+    <script src="__PUBLIC__/js/jquery-2.1.0.js"></script>
+    <link href="__PUBLIC__/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="__PUBLIC__/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link rel="stylesheet" href="__PUBLIC__/css/001.css" />
+    <link rel="stylesheet" href="__PUBLIC__/css/UI2.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/users.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/my_css_jia.css" />
+    <link rel="stylesheet" href="__PUBLIC__/css/checkcss.css" />
+</head>
+<style type="text/css">
+    img{width:60px}
+</style>
+<body>
+<div class="panel admin-panel">
+    <div class="panel-head">
+        <i class="fa icon-reorder" style="font-size: 19px;"></i>
+        <strong class="zijing">操作记录</strong>
+    </div>
+</div>
+<div class="tabale_txjl" style="min-height: 470px">
+    <table class="table">
+        <thead>
+            <td>记录编号</td>
+            <td>时间</td>
+            <td>操作账户ID</td>
+            <td>操作类型</td>
+            <td>描述</td>
+        </thead>
+        <tbody>
+        <volist name="list" id="arr">
+            <tr class="alls">
+                <td>{$arr.id}</td>
+                <td>{$arr.time}</td>
+                <td>{$arr.uid}</td>
+                <td>{$arr.types}</td>
+                <td>{$arr.orsers}</td>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+</div>
+
+<div class="box clearfix">
+    <div class="left_dibu">
+        <if condition="$count gt 1">
+            <button class='selects button border-blue'>首页</button>
+            <button class='button border-yellow'>1</button>
+            <?php
+               for($i=2;$i<=$count && $i<10;$i++){
+                echo "<button class='selects button border-green'>$i</button> ";
+            }
+            ?>
+        </if>
+        <if condition="$count gt 9">
+            <button class='selects button border-blue'>尾页</button>
+        </if>
+    </div>
+
+    <div class="right_dibu" style="">
+        <input type="number" placeholder="页" class="dump_to" style="width: 50px;margin-right: 5px;padding: 0 5px;border: 1px solid #1ab394; font-size: 10px; line-height: 34px;height: 34px; display: inline-block;">
+        <button class='button border-blue selects'><strong>跳转</strong></button>
+        <span class="zongyeshu">页数:1/总页数:{$count}</span>
+    </div>
+
+</div>
+<input type="hidden" value="0" id="type" />
+</body>
+
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script src="__PUBLIC__/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="__PUBLIC__/js/plugins/cropper/cropper.min.js"></script>
+<script src="__PUBLIC__/js/demo/form-advanced-demo.min.js"></script>
+<script src="__PUBLIC__/js/adminlog.js"></script>
+<script>
+    function replaceNotNumber(hehe) {
+        var result = "";
+        var timea =hehe.value;
+        var bb = timea.replace(/:/g, "");
+        for(var i = 0; i < bb.length; i++) {
+            result += bb.charAt(i);
+            if(i % 2 == 1) result += ':';
+        }
+        hehe.value =result.substring(0, 8);
+    }
+</script>
+</html>

@@ -1,0 +1,90 @@
+<include file="Common:header"/>
+
+
+<body class="has_menu has_header">
+
+<div class="top_header">
+	<a class="back"><img src="__ROOT__/Public/oxc/img/back_icon.jpg"/></a>
+	<h3>充值</h3>
+</div>
+
+
+
+
+
+<form name=alipayment action=__ROOT__/Public/alipay/pagepay/pagepay.php method=post >
+
+	<div class="form_input " style="margin-top: .2rem;">
+		<ul>
+			<li>
+				<p class="tl1">充值金额: </p>
+				<div class="inputbox">
+					<input id="WIDout_trade_no" name="WIDout_trade_no" value="{$order}"   type="hidden" />
+					<input id="WIDsubject" name="WIDsubject" value="账户充值"   type="hidden" />
+					<input id="WIDbody" name="WIDbody" value="账户余额充值"  type="hidden" />
+
+					<input type="text" id="WIDtotal_amount" name="WIDtotal_amount" style="color: white;" class="input" id="money" maxlength="12"  placeholder="请输入充值金额" />
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<button class="blue_btn pays" style="margin-top: 1rem;" type="submit">充值</button>
+
+
+
+			<!--<dt>商户订单号<input id="WIDout_trade_no" name="WIDout_trade_no" />-->
+			<!--<dt>订单名称<input id="WIDsubject" name="WIDsubject" /-->
+			<!--<dt>付款金额<input id="WIDtotal_amount" name="WIDtotal_amount" />-->
+			<!--<dt>商品描述：<input id="WIDbody" name="WIDbody" />-->
+
+</form>
+
+
+
+
+</body>
+
+<include file="Common:footer"/>
+
+<script type="text/javascript">
+	$(".fssd a").click(function(){
+		var this_index = $(this).index();
+		$(".fssd_item .item").hide();
+		$(".fssd_item .item").eq(this_index).show();
+
+		$(".fssd a").removeClass('on');
+
+		$(this).addClass('on');
+
+	})
+
+//	$(window).load(function() {
+		alert(11);
+
+		$('input.input').keyup(function () {
+			var c = $(this);
+			if (/[^\d]/.test(c.val())) {//替换非数字字符
+				var temp_amount = c.val().replace(/[^\d]/g, '');
+				$(this).val(temp_amount);
+			}
+		})
+
+		$(".pays").click(function(){
+			var money=$('#money').val();
+			var arr={ money:money };
+
+			$.ajax({
+				url:"Index/payapi", method: "post",
+				async: "true", data:arr , timeout: 5000, dataType: "json",
+				success: function (data){
+					var arr = eval(data);
+					console.log(arr);
+				}
+			})
+		})
+//	})
+
+</script>
+
+</html>

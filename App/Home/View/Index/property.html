@@ -1,0 +1,79 @@
+<include file="Common:header"/>
+
+
+    <style type="text/css">
+
+        .btn_box{
+            height: 60px;
+        }
+        .btn_two{
+            position: relative;
+            float: left;
+            width: 40%;
+            margin-left:4%;
+            margin-right:4%;
+        }
+        .red_btn{
+            background:#db4968 ;
+            color: white;
+        }
+
+    </style>
+    <body class="has_menu">
+        
+        <div class="zj_xq">
+            <img src="__ROOT__/Public/oxc/img/my_account_money_bg.jpg"/>
+            <div class="zj_float">
+                <div class="f1">账户余额</div>
+                <div class="f2" style="font-size: .4rem">
+                    {$money}<span style="left:200px">CNY</span>
+                    <span style="left: 0px;margin-top: 50px;">货币总估值：{$hbmoney}</span>
+                </div>
+            </div>
+            <a class="cj_record"></a>
+        </div>
+
+        <div class="btn_box">
+            <!-- <a  class="a_href" data-href="/home/Index/pay"><div class="green_btn btn_two">充值</div></a> -->
+            <a  class="a_href" data-href="/home/Index/pays"><div class="green_btn btn_two">充值</div></a>
+            <!-- <a  class="a_href" data-href="/home/Index/aapay"><div class="green_btn btn_two">充值</div></a> -->
+            <a  class="a_href" data-href="/home/UserInfo/tixian"><div class="green_btn red_btn btn_two">提现</div></a>
+        </div>
+        
+        <div class="gap_title2">
+            总资产记录
+            <!--<div class="xz">-->
+                <!--<label><input type="checkbox" />隐藏0额比重</label>-->
+            <!--</div>-->
+        </div>
+        
+        <div class="zc_list">
+            <ul>
+                <volist name="currency" id="arr">
+                    <li>
+                        <table>
+                            <tr>
+                                <td><img src="{$arr.logo}"/></td>
+                                <td>{$arr.name}</td>
+                                <td>
+                                    {$arr.num}
+                                    <br />
+                                    <span>≈¥ {$arr.money}</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+
+
+        <include file="Common:menu"/>
+    </body>
+
+
+    <include file="Common:footer"/>
+    <script type="text/javascript">
+
+    </script>
+</html>

@@ -1,0 +1,20 @@
+.box{  padding-top:15px;  width: 770px;  margin: auto;  }
+.box div{  margin-left: 20px;;  }
+.ws{  min-height:648px;  }
+.all{  min-height: 648px;  }
+.a,.b,.c{width: 100%;display: none;position: relative}
+.a div{float: left;margin-left:20px }
+.b div{float: left;margin-left:20px}
+.c input{margin-left:20px}
+.tj{position: relative}
+.tj .t{float: left;margin-left: 20px}
+.tj_all{position: relative}
+.tj_all div{float: left;margin-left: 10px}
+.tj_all input{float: left;margin-left: 10px}
+.tatistic{width: 1040px;margin-bottom: 0px;border: 1px solid black;height: 40px;margin-left: auto;margin-top: 5%}
+#day,#month,#week,#allwin,#alllose{float: left;height: 40px;width: 200px;line-height: 40px}
+/*#768797*/
+font{color:#768797 }
+.upbody .uid{
+    cursor: pointer
+}

@@ -1,0 +1,136 @@
+/*针对谷歌浏览器内核支持的CSS样式*/
+/*@media screen and (-webkit-min-device-pixel-ratio:0) {}*/
+input{outline:none}
+#a {
+    width: 50%;
+    height: 640px;
+    margin: auto;
+    border: 0px;
+    font-family: 'SFNSText', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    line-height: 1.2;
+}
+body {
+    background-image: url("../../Public/img/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#a1 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+    margin-top: 100px;
+    width: 150px;
+    height: 95px;
+}
+
+#a2 {
+    margin: auto;
+    color: white;
+    font-size: 21px;
+}
+
+#a3 {
+    height: 45px;
+    width: 300px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-width: 0px;
+    margin: auto;
+    background-color: white;
+}
+
+#a4 {
+    height: 45px;
+    width: 300px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-width: 0px;
+    margin: auto;
+    background-color: white;
+    border-top: 1px solid gray;
+}
+
+.in {
+    color:gray;
+    position: relative;
+    width: 200px;
+    height: 30px;
+    border: 0px;
+    margin: auto;
+    /*margin-bottom: 10%;*/
+    margin-left:8% ;
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+.inn {
+    width: 250px;
+    height: 42px;
+    border: 0px;
+    margin-left: 10px;
+    font-size: 20px;
+    background-color: white;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-width: 0px;
+}
+
+#a6 {
+    height: 41px;
+    width: 300px;
+    border-radius: 6px;
+    margin: auto;
+    background-color: white;
+    margin-top: 20px;
+    position: relative;
+}
+#a6 ul {
+    margin: 0;
+}
+#a6 li {
+    line-height: 40px;
+    float: right;
+    margin-right:0 ;
+    height:41px;
+}
+.li1{
+    margin-left:10% ;
+}
+#a6 input {
+    width: 120px;
+    margin-left: -30px
+}
+
+#a5 {
+    padding-top: 30px;
+    width: 280px;
+    margin: auto;
+}
+
+.verify {
+    width: 120px;
+    height: 41px;
+    right: 10px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+ul li {
+    list-style-type: none;
+    float: left
+}
+
+/*针对IE6特制识别的CSS样式*/
+/**HTML .SearchBox {  }*/
+/*针对Firefox浏览器的内核CSS写法：*/
+/*@-moz-document url-prefix() {}*/

@@ -1,0 +1,116 @@
+<include file="Common:header"/>
+<style type="text/css">
+	.form_input .inputbox input {
+	    width: 100%;
+	    height: .7rem;
+	    padding: 0 .15rem;
+	    background: #fff; 
+	    font-size: .23rem;
+	}
+</style>
+	<body class="has_header">
+		
+		<div class="top_header">
+			<a class="back"><img src="__ROOT__/Public/oxc/img/back_icon.jpg"/></a>
+			<h3>资金密码设置</h3>
+		</div>
+		
+		<p class="tips_pas">
+			<img src="__ROOT__/Public/oxc/img/tips.jpg"/>温馨提示
+			<br />
+			资金密码用于资产提现、币币交易、法币交易等敏感操作。
+		</p>
+		
+		<div class="form_input " style="margin-top: .2rem;">
+			<ul>
+				<li>
+					<p class="tl1">资金密码 设置 / 修改<span style="color: red">{$msg}</span></p>
+					<div class="inputbox">
+						<input type="password" name="" id="" class="pass_zj" value="" placeholder="请输入资金密码"/>
+					</div>
+				</li>
+				<li>
+					<p class="tl1">重复密码</p>
+					<div class="inputbox">
+						<input type="password" name="" id="" class="pass_zj_con" value="" placeholder="请重复输入密码"/>
+					</div>
+				</li>
+				<!-- <li>
+					<p class="tl1">重复新密码</p>
+					<div class="inputbox">
+						<input type="password" name="" id="" value="" placeholder="再次输入新密码"/>
+					</div>
+				</li> -->
+				<!-- <li class="jy_pl">
+					<p class="tl1">资金交易密码验证频率</p>
+					<div class="selbox">
+						<select name="">
+							<option value="">请选择验证频率</option>
+						</select>
+					</div>
+				</li> -->
+				<li class="sp">
+					<p class="tl1">短信验证</p>
+					<div class="inputbox">
+						<input type="number" name="" id="" class="code" value="" placeholder="请输入短信验证码"/>
+					</div>
+					<a class="blue_btn coding">获取验证码</a>
+				</li>
+			</ul>
+		</div>
+		
+		
+		<a class="blue_btn passzj" style="margin-top: .1rem;">确定</a>
+		
+	</body>
+
+<include file="Common:footer"/>
+	<script type="text/javascript">
+		$(".coding").click(function(){
+			var coding = $('.coding').html();//选中的值
+			var codstr = coding.substring(2);
+			if(codstr=='s'){
+				return;
+			}
+            var name = {$user};
+            var urlcel = '/home/Login/code';
+			var data = {
+				name:name
+			};
+			console.log(urlcel);
+			ajaxone(urlcel,data);
+
+		});
+		$(".passzj").click(function(){
+
+			var pass_zj = $('.pass_zj').val();//选中的值
+            var pass_zj_con = $('.pass_zj_con').val();//选中的值
+            var code = $('.code').val();//选中的值
+			var urlcel = '/home/UserInfo/passzj';
+			var data = {
+				pass_zj:pass_zj,
+				pass_zj_con:pass_zj_con,
+				code:code
+			};
+			console.log(data);
+			console.log(urlcel);
+			ajaxone(urlcel,data);
+		});
+
+
+		function ajaxonef(res){
+			console.log(res);
+			if(res.code == 400){
+				if(res.msg == '已发送！'){
+					var intDiff = parseInt(59);
+			    	timer(intDiff);
+				}
+				alert(res.msg);
+			}else{
+				alert('修改成功！');
+				window.location.replace(res.msg);
+			}
+		}
+	</script>
+
+</html>

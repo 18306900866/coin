@@ -1,0 +1,56 @@
+<include file="Common:header"/>
+<style type="text/css">
+	.form_input .inputbox input {
+	    width: 100%;
+	    height: .7rem;
+	    padding: 0 .15rem;
+	    background: #fff; 
+	    font-size: .23rem;
+	}
+</style>
+	<body class="has_menu has_header">
+		
+		<div class="top_header">
+			<a class="back"><img src="__ROOT__/Public/oxc/img/back_icon.jpg"/></a>
+			<h3>身份认证</h3>
+		</div>
+		
+		<div class="form_input " style="margin-top: .2rem;">
+			<ul>
+				<li>
+					<p class="tl1">真实姓名</p>
+					<div class="inputbox">
+						<input type="text" name="" disabled="disabled" class="name" id="" value="{$bank.name}" placeholder="请输入真实姓名"/>
+					</div>
+				</li>
+				<li>
+					<p class="tl1">身份证证号</p>
+					<div class="inputbox">
+						<input type="text" name="" disabled="disabled" class="card_code" id="" value="{$bank.card_code}" placeholder="请输入身份证证号"/>
+					</div>
+				</li>
+				<li>
+					<p class="tl1">开户行城市-开户行</p>
+					<div class="inputbox">
+						<input type="text" name="" disabled="disabled" class="city" id="" value="{$bank.city}" placeholder="请输开户行城市"/>
+					</div>
+				</li>
+				<li>
+					<p class="tl1">银行卡卡号</p>
+					<div class="inputbox">
+						<input type="number" name="" disabled="disabled" class="bank_code" id="" value="{$bank.bank_code}" placeholder="请输入银行卡卡号"/>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		
+		<a class="blue_btn" style="margin-top: 1rem;">{$bank.result}</a>
+		
+	</body>
+
+<include file="Common:footer"/>
+	<script type="text/javascript">
+	</script>
+
+</html>

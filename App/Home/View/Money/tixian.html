@@ -1,0 +1,52 @@
+<include file="Common:header"/>
+
+	<body class="has_menu has_header">
+		
+		<div class="top_header">
+			<a href="" class="back"><img src="__ROOT__/public/oxc/img/back_icon.jpg"/></a>
+			<h3>提款</h3>
+		</div>
+		
+		<div class="form_input " style="margin-top: .2rem;">
+			<ul>
+				<li>
+					<p class="tl1">持卡人</p>
+					<div class="inputbox">
+						<input type="text" name="" id="" value="" placeholder="请输入持卡人姓名"/>
+					</div>
+				</li>
+				<li>
+					<p class="tl1">银行卡卡号</p>
+					<div class="inputbox">
+						<input type="text" name="" id="" value="" placeholder="请输入卡号"/>
+					</div>
+				</li>
+				<li>
+					<p class="tl1">提现金额</p>
+					<div class="inputbox">
+						<input type="number" name="" id="" value="" placeholder="请输入提现金额"/>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		
+		<a href="" class="blue_btn" style="margin-top: 1rem;">确定</a>
+		
+	</body>
+
+<include file="Common:footer"/>
+	<script type="text/javascript">
+		$(".fssd a").click(function(){
+			var this_index = $(this).index();
+			$(".fssd_item .item").hide();
+			$(".fssd_item .item").eq(this_index).show();
+			
+			$(".fssd a").removeClass('on');
+			
+			$(this).addClass('on');
+			
+		})
+	</script>
+
+</html>

@@ -1,0 +1,183 @@
+<include file="Common:header"/>
+
+<body class="has_menu">
+
+<!--顶部轮播图-->
+<div class="index_banner">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <volist name="img" id="arr">
+
+                <if condition="$arr.url eq '' ">
+                    <div class="swiper-slide"><img src="{$arr.img}"/></div>
+                    <else/>
+                    <a href="{$arr.url}">
+                        <div class="swiper-slide"><img src="{$arr.img}"/></div>
+                    </a>
+                </if>
+
+            </volist>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+
+<div class="index_list">
+    <div class="gap_title1">
+        <img src="__ROOT__/Public/oxc/img/icon1.jpg"/>市场涨幅榜
+        <div class="a_href" data-href="http://kefu.ziyun.com.cn/vclient/chat/?websiteid=144998&wc=33d543"
+             style="float: right"><img src="/public/img/serice.jpg" style="border-radius: 50%;" />在线客服
+        </div>
+    </div>
+    <ul class="new_box">
+
+        <!--绿涨   红跌-->
+        <volist name="currency" id="arr">
+
+
+            <if condition="$arr.defloat gt 0">
+                <li class="green">
+            </if>
+            <if condition="$arr.defloat lt 0">
+                <li class="red">
+            </if>
+            <if condition="$arr.defloat eq 0">
+                <li class="">
+            </if>
+            <table>
+                <tr class="a_href" data-href="/home/Index/message?hid={$arr.id}">
+                    <td><img src="{$arr.img}"/></td>
+                    <td class="st1">
+                        {$arr.keyname} <span class="gray_font1">/ {$arr.types} </span><br/>
+                        <span class="gray_font1">成交量 {$arr.sales_all}</span>
+                    </td>
+                    <td class="st2">
+
+                        <if condition="$arr.defloat gt 0">
+                            <span class="green_font">{$arr.money}</span><br/>
+                        </if>
+                        <if condition="$arr.defloat lt 0">
+                            <span class="red_font">{$arr.money}</span><br/>
+                        </if>
+                        <if condition="$arr.defloat eq 0">
+                            <span class="green_font">{$arr.money}</span><br/>
+                        </if>
+
+                        <span class="gray_font1">≈¥ {$arr.money}</span>
+                    </td>
+
+
+                    <td class="st3">
+                        <if condition="$arr.defloat gt 0">
+                            <div class="list_btn green">{$arr.defloat}%</div>
+                        </if>
+                        <if condition="$arr.defloat lt 0">
+                            <div class="list_btn red">{$arr.defloat}%</div>
+                        </if>
+                        <if condition="$arr.defloat eq 0">
+                            <div class="list_btn">{$arr.defloat}%</div>
+                        </if>
+                    </td>
+                </tr>
+            </table>
+            </li>
+
+        </volist>
+    </ul>
+</div>
+
+<include file="Common:menu"/>
+</body>
+
+
+<include file="Common:footer"/>
+
+<script type="text/javascript">
+
+
+    $(window).load(function () {
+
+
+        setTimeout(function () {
+        }, 5000)
+        setInterval(showTime, 10000);
+
+        function showTime() {
+            $.ajax({
+                url: "/home/Index/ajaxcurrency", method: "post",
+                async: "true", data: [], timeout: 5000, dataType: "json",
+                success: function (data) {
+                    var arr = eval(data);
+                    var array = arr['data'];
+                    var sum = arr['sum'];
+
+                    var ul = '';
+
+
+                    for (var i = 0; i < sum; i++) {
+                        var defloat = parseInt(array[i]['defloat']);
+
+                        var li = '';
+                        if (defloat > 0) {
+                            li = '<li class="green">';
+                        } else if (defloat < 0) {
+                            li = '<li class="red">';
+                        } else {
+                            li = '<li class="green">';
+                        }
+                        li = li + '<table><tr class="a_href" data-href="/home/Index/message?hid=' +
+                            array[i]['id'] +
+                            '"><td><img src="' +
+                            array[i]['img'] +
+                            '"/></td><td class="st1">' +
+                            array[i]['keyname'] +
+                            ' <span class="gray_font1">/ ' +
+                            array[i]['types'] +
+                            ' </span><br /><span class="gray_font1">成交量 ' +
+                            array[i]['sales_all'] +
+                            '</span></td><td class="st2">';
+
+                        if (array[i]['defloat'] < 0) {
+                            li = li + '<span class="red_font">' +
+                                array[i]['money'] +
+                                '</span><br /><span class="gray_font1">≈¥ ' +
+                                array[i]['money'] +
+                                '</span></td><td class="st3">' +
+                                '<div class="list_btn red">' +
+                                array[i]['defloat'] +
+                                '%</div></td></tr></table></li>';
+                        } else {
+                            li = li + '<span class="green_font">' +
+                                array[i]['money'] +
+                                '</span><br /><span class="gray_font1">≈¥ ' +
+                                array[i]['money'] +
+                                '</span></td><td class="st3">' +
+                                '<div class="list_btn green">' +
+                                array[i]['defloat'] +
+                                '%</div></td></tr></table></li>';
+                        }
+
+                        ul = ul + li;
+                    }
+
+
+                    $('.new_box').html(ul);
+
+                    $(".a_href").click(function () {
+                        window.location.href = $(this).attr('data-href');
+                    });
+
+                }
+            })
+        }
+    })
+
+
+    //		$(function(){
+    //		})
+
+</script>
+
+
+</html>

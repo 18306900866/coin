@@ -1,0 +1,76 @@
+<include file="Common:header"/>
+<style type="text/css">
+	.form_input .inputbox input {
+	    width: 100%;
+	    height: .7rem;
+	    padding: 0 .15rem;
+	    background: #fff; 
+	    font-size: .23rem;
+	}
+</style>
+	<body class="has_menu has_header">
+		
+		<div class="top_header">
+			<a class="back"><img src="__ROOT__/Public/oxc/img/back_icon.jpg"/></a>
+			<h3>登陆</h3>
+			<a href="/home/Login/register" class="right_icon zc">注册</a>
+		</div>
+		
+		<div class="form_input " style="margin-top: .2rem;">
+			<ul>
+				<li>
+					<p class="tl1">手机号码</p>
+					<div class="inputbox">
+						<input type="text" name="" id="" class="name" value="" placeholder="手机号码"/>
+					</div>
+				</li>
+				<li>
+					<p class="tl1">密码</p>
+					<div class="inputbox">
+						<input type="password" name="" id="" class="pass" value="" placeholder="请输入新密码"/>
+					</div>
+				</li>
+				<li class="sp">
+					<!-- <p class="tl1">短信验证码</p>
+					<div class="inputbox">
+						<input type="password" name="" id="" value="" placeholder="请输入短信验证码"/>
+					</div> -->
+					<a href="/home/Login/forget" class="blue_btn" style="background: none; font-size: 15px;">忘记密码?</a>
+				</li>
+			</ul>
+		</div>
+		
+		
+		<a  class="blue_btn logins" style="margin-top: 1rem;">登入</a>
+		
+	</body>
+
+<include file="Common:footer"/>
+	<script type="text/javascript">
+
+		$(".logins").click(function(){
+
+			var name = $('.name').val();//选中的值
+            var pass = $('.pass').val();//选中的值
+			var urlcel = '/home/Login/login';
+			var data = {
+				name:name,
+				pass:pass
+			};
+			ajaxone(urlcel,data);
+		});
+
+
+		function ajaxonef(res){
+			console.log(res);
+			if(res.code == 400){
+				alert(res.msg);
+			}else{
+				alert('登入成功！');
+				window.location.replace(res.msg);
+			}
+		}
+		
+	</script>
+
+</html>

@@ -1,0 +1,380 @@
+<include file="Common:header"/>
+
+<link rel="stylesheet" type="text/css" href="__ROOT__/Public/zhifu/css/zhifu.css"/>
+
+	<body class="has_menu has_header">
+
+		<div class="top_header">
+			<h3><a href="javascript:;" id="show_more_coin"> {$nowname} <img src="__ROOT__/Public/oxc/img/arr2.png"/></a></h3>
+		</div>
+
+		<div class="chose_coin">
+			<div class="coin_box">
+				<table>
+					<tbody>
+
+					<volist name="currencys" id="currency">
+						<tr><td><a class="a_href" data-href="/home/Index/sale?hid={$currency.id}">{$currency.keyname}/{$currency.types}</a></td></tr>
+					</volist>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		
+		<div class="jy_switch">
+			<table>
+				<tr>
+					<td><a  class="a_href" data-href="/home/Index/buy?hid={$hid}">买入</a></td>
+					<td class="on"><a>卖出</a></td>
+					<td><a  class="a_href" data-href="/home/Index/history?hid={$hid}">历史成交</a></td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="jy_wrap clearfix">
+			<div class="col-xs-6 lf">
+				<p class="f1">单价</p>
+				
+				<div class="inputbox">
+					<table>
+						<tr>
+							<td width="20%"><a href="javascript:;"> </a></td>
+							<td id="nowmoney"><a>{$nowmoney}</a></td>
+							<td width="20%"><a href="javascript:;"> </a></td>
+						</tr>
+					</table>
+				</div>
+				
+				<p class="f1">≈¥{$nowmoney}</p>
+
+				<div class="inputbox" style="margin-top: .2rem;">
+					<table>
+						<tr>
+							<td width="20%" class="numa"><a href="javascript:;">-</a></td>
+							<td><input class="numx" type="text"  placeholder="数量(ETH)"  maxlength="8" oninput="this.value=this.value.replace(/[^0-9]/g,'');"></td>
+							<td width="20%" class="numb"><a href="javascript:;">+</a></td>
+						</tr>
+					</table>
+				</div>
+
+
+				<div class="jy_btns">
+					<table>
+						<tr>
+							<td class="on"><a>+10</a></td>
+							<td class="on"><a>+100</a></td>
+							<td class="on"><a>+200</a></td>
+							<td class="on"><a>+500</a></td>
+						</tr>
+						<tr><td colspan="4" style="font-size: .1rem;color:white">卖出将扣除3%手续费</td></tr>
+					</table>
+				</div>
+
+				<div class="inputbox2">
+					<input id="allmoney" type="text" placeholder="总额(BTC)" disabled="disabled" />
+				</div>
+
+				<div class="jy_zj">
+					<p>可用 {$usermoney}<span id="smoney">0BTC</span></p>
+					<p>冻结 {$userapplying}<span id="sapplying">0BTC</span></p>
+				</div>
+
+				<input type="hidden" value="{$hid}" id="nowid">
+				<a href="javascript:void(0);" class="green_btn ljzf_but all_w"  style="background:#db4968" >卖出</a>
+				
+				<div class="jy_info1" style="color: white">
+					<span>买</span>
+					<span>卖</span>
+				</div>
+				
+				<img src="{$imgzs}"/>
+				
+			</div>
+			<div class="col-xs-6" style="padding-right: 0;padding-left: 0;">
+				<table class="jy_date">
+					<tr>
+						<td>价格(BTC)</td>
+						<td>数量(ETH)</td>
+					</tr>
+
+					<volist name="saledata" id="sale">
+						<tr>
+							<td class="red_font">{$sale.money}</td>
+							<td>{$sale.quantity}</td>
+						</tr>
+					</volist>
+
+					<tr>
+						<td colspan="2">
+							<div class="gap green_font">
+								¥{$nowmoney}<br />
+								<span>≈¥{$nowmoney}</span>
+							</div>
+						</td>
+					</tr>
+
+					<volist name="buydata" id="buy">
+						<tr>
+							<td class="green_font">{$buy.money}</td>
+							<td>{$buy.quantity}</td>
+						</tr>
+					</volist>
+				</table>
+			</div>
+		</div>
+		<div class="gap_title1 gap_title3" style="margin-top: .2rem;">
+			<img src="__ROOT__/Public/oxc/img/newst_icon.jpg">最新成交
+		</div>
+		
+		<div class="jy_date_list">
+			<table>
+				<thead>
+					<tr>
+						<td>时间</td>
+						<td>数量</td>
+						<td>价格</td>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					<volist name="news" id="arr">
+
+						<tr>
+							<td>{$arr.time}</td>
+							<td>{$arr.quantity}</td>
+							<if condition="$arr.types eq 1 ">
+								<td class="green_font">{$arr.money}</td>
+								<else />
+								<td class="red_font">{$arr.money}</td>
+							</if>
+						</tr>
+
+					</volist>
+				</tbody>
+			</table>
+		</div>
+
+
+		<div class="ftc_wzsf">
+			<div class="srzfmm_box">
+				<div class="qsrzfmm_bt clear_wl">
+					<img src="__ROOT__/Public/zhifu/images/xx_03.jpg" class="tx close fl">
+					<span class="fl">请输入支付密码</span></div>
+				<div class="zfmmxx_shop">
+					<div class="mz">卖出货币</div>
+					<div class="zhifu_price">￥88.88</div>
+				</div>
+				<ul class="mm_box">
+					<li></li><li></li><li></li><li></li><li></li><li></li>
+				</ul>
+			</div>
+			<div class="numb_box">
+				<div class="xiaq_tb">
+					<img src="__ROOT__/Public/zhifu/images/jftc_14.jpg" height="10"></div>
+				<ul class="nub_ggg">
+					<li><a href="javascript:void(0);" class="zf_num">1</a></li>
+					<li><a href="javascript:void(0);" class="zj_x zf_num">2</a></li>
+					<li><a href="javascript:void(0);" class="zf_num">3</a></li>
+					<li><a href="javascript:void(0);" class="zf_num">4</a></li>
+					<li><a href="javascript:void(0);" class="zj_x zf_num">5</a></li>
+					<li><a href="javascript:void(0);" class="zf_num">6</a></li>
+					<li><a href="javascript:void(0);" class="zf_num">7</a></li>
+					<li><a href="javascript:void(0);" class="zj_x zf_num">8</a></li>
+					<li><a href="javascript:void(0);" class="zf_num">9</a></li>
+					<li><a href="javascript:void(0);" class="zf_empty">清空</a></li>
+					<li><a href="javascript:void(0);" class="zj_x zf_num">0</a></li>
+					<li><a href="javascript:void(0);" class="zf_del">删除</a></li>
+				</ul>
+			</div>
+			<div class="hbbj"></div>
+		</div>
+
+		<include file="Common:menu"/>
+
+	</body>
+	</body>
+
+
+<include file="Common:footer"/>
+<script type="text/javascript">
+
+	$("#show_more_coin").on('click',function(){
+		if($(".chose_coin").hasClass('on')){
+			$(".chose_coin").removeClass('on');
+		}else{
+			$(".chose_coin").addClass('on');
+		}
+	})
+
+	function upmoney(){
+		var num = $('.numx').val();
+		if ( num<1 ) return
+		var nowmoney = $('#nowmoney').text();
+		var allmoney = parseInt(num) * nowmoney * 0.97;
+		allmoney = allmoney.toFixed(3);
+		allmoney = '总额：'+allmoney+' (BTC)';
+		$('#allmoney').val(allmoney);
+	}
+
+	$('.numx').blur(function(){
+		upmoney();
+	});
+
+	$(".numa").on('click',function(){
+		var num = $('.numx').val();
+		if ( num<1 ) num = 0;
+		num = parseInt(num) - 1 ;
+		if ( num<1 ) num = 1;
+		$('.numx').val(num);
+		upmoney();
+	})
+
+	$(".numb").on('click',function(){
+		var num = $('.numx').val();
+		if ( num<1 ) num = 0;
+		num = parseInt(num) + 1 ;
+		if ( num>99999999 ) num = 99999999;
+		$('.numx').val(num);
+		upmoney();
+	})
+
+	$(".on").on('click',function(){
+		var num = $('.numx').val();
+		var xx = $(this).text();
+		if ( num<1 ) num = 0;
+		xx = xx.substring(1);
+		num = parseInt(num) + parseInt(xx);
+		if ( num>99999999 ) num = 99999999;
+		$('.numx').val(num);
+		upmoney();
+	})
+
+	function payhb(hid){
+		var num = $('#num').val();
+		if (num < 1) return;
+		var data = {hid:hid,num:num,types:0}
+		$.ajax({
+			url:"ajaxpay", method: "post",
+			async: "true", data:data, timeout: 5000, dataType: "json",
+			success: function (data){
+				var arr = eval(data);
+
+				$('#smoney').text(arr['money']);
+				$('#sapplying').text(arr['applying']);
+				alert(arr['message']);
+			}
+		})
+	}
+
+	$(function(){
+		//出现浮动层
+		$(".ljzf_but").click(function(){
+
+			var num = $('.numx').val();
+			if ( num<1 ) return
+
+			var nowmoney = $('#nowmoney').text();
+			var allmoney = parseInt(num) * nowmoney * 0.97;
+			allmoney = '￥' + allmoney.toFixed(3);
+
+			$('.zhifu_price').html(allmoney);
+
+			$(".ftc_wzsf").show();
+		});
+		//关闭浮动
+		$(".close").click(function(){
+			$(".ftc_wzsf").hide();
+			$(".mm_box li").removeClass("mmdd");
+			$(".mm_box li").attr("data","");
+			i = 0;
+		});
+		//数字显示隐藏
+		$(".xiaq_tb").click(function(){
+			$(".numb_box").slideUp(500);
+		});
+		$(".mm_box").click(function(){
+			$(".numb_box").slideDown(500);
+		});
+		//----
+		var i = 0;
+		$(".nub_ggg li .zf_num").click(function(){
+
+			if(i<6){
+				$(".mm_box li").eq(i).addClass("mmdd");
+				$(".mm_box li").eq(i).attr("data",$(this).text());
+				i++
+
+				if (i==6) {
+					setTimeout(function(){
+						var pwd = "";
+						$(".mm_box li").each(function(){
+							pwd += $(this).attr("data");
+						});
+						//密码输入完成
+						var hid = $('#nowid').val();
+						var numx = $('.numx').val();
+						if (numx < 1) return;
+						var datasss = {hid:hid,nums:numx,types:0,pwd:pwd}
+						$.ajax({
+							url:"ajaxpay", method: "post",
+							async: "true", data:datasss, timeout: 5000, dataType: "json",
+							success: function (data){
+								var arr = eval(data);
+								$('#smoney').text(arr['money']);
+								$('#sapplying').text(arr['applying']);
+
+								if (arr['message'] == '1'){
+									$(".ftc_wzsf").hide();
+									$(".mm_box li").removeClass("mmdd");
+									$(".mm_box li").attr("data","");
+									i = 0;
+
+									alert('卖出成功！');
+								}else if(arr['message'] == '-1') {
+									alert('密码错误！');
+									$(".mm_box li").removeClass("mmdd");
+									$(".mm_box li").attr("data","");
+									i = 0;
+								}else if(arr['message'] == '0') {
+									alert('余币数量不足！');
+									$(".ftc_wzsf").hide();
+									$(".mm_box li").removeClass("mmdd");
+									$(".mm_box li").attr("data","");
+									i = 0;
+								}else{
+									alert(arr['message']);
+									$(".ftc_wzsf").hide();
+									$(".mm_box li").removeClass("mmdd");
+									$(".mm_box li").attr("data","");
+									i = 0;
+								}
+							}
+						})
+
+
+					},100);
+				};
+			}
+		});
+
+		$(".nub_ggg li .zf_del").click(function(){
+			if(i>0){
+				i--
+				$(".mm_box li").eq(i).removeClass("mmdd");
+				$(".mm_box li").eq(i).attr("data","");
+			}
+		});
+
+		$(".nub_ggg li .zf_empty").click(function(){
+			$(".mm_box li").removeClass("mmdd");
+			$(".mm_box li").attr("data","");
+			i = 0;
+		});
+
+	});
+</script>
+
+</html>

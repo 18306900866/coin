@@ -1,0 +1,68 @@
+<include file="Common:header"/>
+<style type="text/css">
+	.form_input .inputbox input {
+	    width: 100%;
+	    height: .7rem;
+	    padding: 0 .15rem;
+	    background: #fff; 
+	    font-size: .23rem;
+	}
+</style>
+	<body class="has_menu has_header">
+		
+		<div class="top_header">
+			<a class="back"><img src="__ROOT__/Public/oxc/img/back_icon.jpg"/></a>
+			<h3>提现</h3>
+		</div>
+		
+		<div class="form_input " style="margin-top: .2rem;">
+			<ul>
+				<!-- <li>
+					<p class="tl1">持卡人</p>
+					<div class="inputbox">
+						<input type="text" name="" id="" value="" placeholder="请输入持卡人姓名"/>
+					</div>
+				</li>
+				<li>
+					<p class="tl1">银行卡卡号</p>
+					<div class="inputbox">
+						<input type="text" name="" id="" value="" placeholder="请输入卡号"/>
+					</div>
+				</li> -->
+				<li>
+					<p class="tl1">提现金额  <span style="color: red">提现需扣除5%的手续费</span></p>
+					<div class="inputbox">
+						<input type="number" name="" class="money" id="" value="" placeholder="请输入提现金额"/>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		
+		<a class="blue_btn tikuan" style="margin-top: 1rem;">提交</a>
+		
+	</body>
+
+<include file="Common:footer"/>
+	<script type="text/javascript">
+		$(".tikuan").click(function(){
+			var money = $('.money').val();//选中的值
+			var urlcel = '/home/UserInfo/tikuan';
+			var data = {
+				money:money
+			};
+			ajaxone(urlcel,data);
+		});
+
+
+		function ajaxonef(res){
+			console.log(res);
+			if(res.code == 400){
+				alert(res.msg);
+			}else{
+				window.location.replace(res.msg);
+			}
+		}
+	</script>
+
+</html>

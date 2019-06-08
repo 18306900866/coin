@@ -1,0 +1,62 @@
+#windows{
+    width:340px ;
+    height:450px;
+    margin:50px;margin-left:100px;
+    background: #11b6b6;
+    padding:40px;
+    color: white;
+}
+
+.tit{
+    text-align: center;
+    font-size:40px;
+    font-family: 黑体;
+    height:95px;
+}
+.class{
+    height:60px;
+    width: 300px;
+}
+.name{
+    font-size:22px;
+    width:90px;
+    float: left;
+}
+.input{
+    float: left;
+    width: 200px;
+    font-size:22px;
+}
+.labels{
+    float: left;
+    width: 250px;
+    height: 100px;
+}
+.demo--label{margin:5px 5px 0 0;display:inline-block;float:left;  width: 117px;}
+.demo--radio{display:none}
+.demo--radioInput{background-color:#fff;border:1px solid rgba(0,0,0,0.15);border-radius:100%;display:inline-block;height:16px;margin-right:10px;margin-top:-1px;vertical-align:middle;width:16px;line-height:1}
+.demo--radio:checked + .demo--radioInput:after{background-color:#57ad68;border-radius:100%;content:"";display:inline-block;height:12px;margin:2px;width:12px}
+.demo--checkbox.demo--radioInput,.demo--radio:checked + .demo--checkbox.demo--radioInput:after{border-radius:0}
+
+#bus{
+    text-align: center;
+    line-height: 60px;
+    height: 60px;
+    width: 200px;
+    margin: auto;
+    font-size: 25px;
+    background-color: #00aa00;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+#bus:hover{
+    background-color: #03b6fd;
+    height: 54px;
+    width: 194px;
+    border: 3px solid silver;
+}
+#span_m{
+    color: red;
+    margin: auto;
+}

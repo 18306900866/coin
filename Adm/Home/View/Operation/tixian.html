@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <title></title>
+
+    <script src="__PUBLIC__/js/jquery-2.1.0.js"></script>
+    <link href="__PUBLIC__/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="__PUBLIC__/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link rel="stylesheet" href="__PUBLIC__/css/001.css" />
+    <link rel="stylesheet" href="__PUBLIC__/css/UI2.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/users.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/my_css_jia.css" />
+    <link rel="stylesheet" href="__PUBLIC__/css/checkcss.css" />
+    <!--<base target="_blank">-->
+</head>
+
+<body>
+<div class="panel admin-panel">
+    <div class="panel-head">
+        <i class="fa icon-reorder" style="font-size: 19px;"></i>
+        <strong class="zijing">用户提现申请</strong>
+    </div>
+    <div style="position: relative" class="clearfix txjl">
+        <div class="form-group txjl_form-group_select_tongxiu">
+            <label>用户ID(多查询请用","隔开)</label>
+            <input type="text" placeholder="请输入用户ID" class="form-control user_id input_border_ra">
+        </div>
+        <div class="form-group txjl_form-group_select_tongxiu">
+            <label>用户账号(多查询请用","隔开)</label>
+            <input type="text" placeholder="请输入用户账号" class="form-control user_account input_border_ra">
+        </div>
+        <div class="form-group txjl_form-group_select_tongxiu chosen-container chosen-container-multi chosen-with-drop chosen-container-active " style="width: 320px;float: left;margin-left: 20px">
+            <label>充值金额</label>
+            <div style="position: relative" class="clearfix">
+                <input type="text" placeholder="最小金额" class="form-control money_start input_border_ra" style="width: 40%;float: left;margin-right: 5px">
+                <input type="text" placeholder="最大金额" class="form-control money_end input_border_ra" style="width: 40%;float: left;margin-right: 5px">
+            </div>
+        </div>
+        <div style="float: left;margin-left: 20px;line-height: 57px; height: 57px;">
+            <button class="select btn btn-sm btn-primary margin_top20 search vertical_al_midd" type="submit"><strong>搜 索</strong></button>
+            <button class="btn btn-sm btn-primary margin_top20 cancel vertical_al_midd" type="submit"><strong>清 空</strong></button>
+        </div>
+    </div>
+</div>
+<div class="tabale_txjl" style="min-height: 470px">
+    <table class="table">
+        <thead>
+        <td>订单编号</td>
+        <td>用户ID</td>
+        <td>用户名</td>
+        <td>银行卡号</td>
+        <td class="soc select" name="money">金额<i class="sorting_ascss"></i></td>
+        <td class="soc select" name="time">时间<i class="sorting_ascss"></i></td>
+        <td>状态</td>
+        </thead>
+        <tbody>
+        <volist name="list" id="arr">
+            <tr class="alls">
+                <td>{$arr.orders}</td>
+                <td>{$arr.uid}</td>
+                <td>{$arr.account}</td>
+                <td>{$arr.bankcrad}</td>
+                <td>{$arr.money}</td>
+                <td>{$arr.time}</td>
+                <if condition="$arr.result eq '提现成功' ">
+                    <td class="text-success">提现成功</td>
+                    <else />
+                    <if condition="$arr.result eq '提现失败' ">
+                        <td class="text-danger">提现失败</td>
+                        <else />
+                        <td>
+                            <button type="button" class="btn btn-w-m btn-primary">确认提现</button>
+                            <button type="button" class="btn btn-w-m btn-warning">取消提现</button>
+                        </td>
+                    </if>
+                </if>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+</div>
+
+<div class="box clearfix">
+    <div class="left_dibu">
+        <if condition="$count gt 1">
+            <button class='select button border-blue'>首页</button>
+            <button class='button border-yellow'>1</button>
+            <?php
+               for($i=2;$i<=$count && $i<10;$i++){
+                echo "<button class='select button border-green'>$i</button> ";
+            }
+            ?>
+        </if>
+        <if condition="$count gt 9">
+            <button class='select button border-blue'>尾页</button>
+        </if>
+    </div>
+
+    <div class="right_dibu" style="">
+        <input type="number" placeholder="页" class="dump_to" style="width: 50px;margin-right: 5px;padding: 0 5px;border: 1px solid #1ab394; font-size: 10px; line-height: 34px;height: 34px; display: inline-block;">
+        <button class='button border-blue select'><strong>跳转</strong></button>
+        <span class="zongyeshu">页数:1/总页数:{$count}</span>
+    </div>
+
+</div>
+<input type="hidden" value="0" id="type" />
+</body>
+
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script src="__PUBLIC__/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="__PUBLIC__/js/plugins/cropper/cropper.min.js"></script>
+<script src="__PUBLIC__/js/demo/form-advanced-demo.min.js"></script>
+<script src="__PUBLIC__/js/bank.js"></script>
+<script>
+    function replaceNotNumber(hehe) {
+        var result = "";
+        var timea =hehe.value;
+        var bb = timea.replace(/:/g, "");
+        for(var i = 0; i < bb.length; i++) {
+            result += bb.charAt(i);
+            if(i % 2 == 1) result += ':';
+        }
+        hehe.value =result.substring(0, 8);
+    }
+</script>
+</html>

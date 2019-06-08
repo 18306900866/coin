@@ -1,0 +1,94 @@
+.clearfix:after {
+    clear: both;
+    content: '';
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+.clearfix {
+    *display: inline-block;
+}
+* html .clearfix {
+    height: 1%;
+}
+.right_dibu {
+    float: right;
+    width: 40%;
+}
+.left_dibu {
+    float: left;
+    width: 55%;
+}
+.box div.left_dibu {
+    margin-left: 0;
+}
+.box {
+    max-width: 1000px;
+    width: auto;
+}
+.zongyeshu {
+    line-height: 34px;
+    height: 34px;
+    border: 1px solid #1ab394;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+@media only screen and (max-width: 900px) {
+    .right_dibu {
+        clear: both;
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+    .left_dibu {
+        float: left;
+        width: 100%;
+    }
+    .box {
+        text-align: center;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .tabale_txjl {
+        padding: 0 0 0 0px;
+    }
+}
+
+.multiple div{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    border: 1px solid gainsboro;
+    margin-right:0;
+}
+.multiple2 div{
+    margin: 2px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid gainsboro;
+    background-color:#1ab394;
+    margin-right:2px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"]{
+    -moz-appearance: textfield;
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,75 @@
+body,html{margin: 0px;padding: 0px}
+body{background-color: #2E313B}
+.box{position: relative;float:left;width:100%;}
+.span{border: 2px solid lightgrey;margin-top: 20px;margin-bottom: 20px}
+.tit{width:100%;height: 80px;font-size:25px;color: white}
+.tit p{text-align: center;line-height: 80px}
+.appmessage{width:100%;margin: auto;padding:50px;min-height:200px }
+.app_all{position: relative;float:left;width:160px;height:210px;margin: 10px;background-color: dimgray;border-radius:10px}
+.app_src{width: 120px;height: 120px;border: 1px solid white;margin:10px;border-radius:10px}
+.app_select{position: relative;float:left;margin-left:10px;margin-right: 5px;width: 16px;height: 16px;}
+
+.title{float:left;width:30%;font-size:20px;color: darkgrey;margin: 2%;text-align:right;line-height:50px}
+
+.in_message{float: left;width:35%;font-size:35px;color: darkgrey;margin: 2%;text-align:left}
+.in_message textarea{min-width:95%;max-width:95%;font-size:16px;padding:8px}
+
+.in_submit{float:left;width:10%;margin:2%}
+@media only screen and (max-width:900px) {
+    .in_submit{float:left;width:10%;margin:2%;margin-top:0}
+}
+
+/*按钮插件*/
+.button-bevel {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    padding: 7px 20px 9px;
+    margin: .5em .5em .5em 0;
+    cursor: pointer;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+    text-transform: capitalize;
+    transition: 0.1s linear;
+}
+.button-bevel:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.button-bevel {
+    vertical-align: top;
+    border-radius: 4px;
+    border: none;
+    padding: 10px 25px 12px;
+}
+.button-bevel:active {
+    position: relative;
+    top: 5px;
+}
+.button-bevel span {
+    font-family: 'EntypoRegular';
+    font-size: 20px;
+    font-weight: normal;
+    vertical-align: middle;
+    line-height: 0;
+    margin-right: .1em;
+}
+.like:after { content: "J"; font-size: 34px; }
+.button-bevel.green {
+    box-shadow: #439230 0 6px 0px, rgba(0, 0, 0, 0.3) 0 10px 3px;
+}
+.button-bevel.green:active {
+    box-shadow: #439230 0 3px 0, rgba(0, 0, 0, 0.2) 0 6px 3px;
+}
+.green {
+    background: #82cc5d;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#82cc5d', endColorstr='#53b73c',GradientType=0 );
+    border: 1px solid #429E34;
+}
+.green:hover {
+    background: #99cc80;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99cc80', endColorstr='#53b73c',GradientType=0 );
+}
+

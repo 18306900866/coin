@@ -1,0 +1,92 @@
+<include file="Common:header"/>
+
+<body class="has_menu has_header">
+
+<div class="top_header">
+	<h3><a href="javascript:;" id="show_more_coin"> {$nowname} <img src="__ROOT__/Public/oxc/img/arr2.png"/></a></h3>
+</div>
+
+<div class="chose_coin">
+	<div class="coin_box">
+		<table>
+			<tbody>
+
+			<volist name="currencys" id="currency">
+				<tr><td><a class="a_href" data-href="/home/Index/history?hid={$currency.id}">{$currency.keyname}/{$currency.types}</a></td></tr>
+			</volist>
+
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="jy_switch">
+	<table>
+		<tr>
+			<td><a  class="a_href" data-href="/home/Index/buy?hid={$hid}">买入</a></td>
+			<td><a  class="a_href" data-href="/home/Index/sale?hid={$hid}">卖出</a></td>
+			<td class="on"><a>历史成交</a></td>
+		</tr>
+	</table>
+</div>
+
+<div class="jy_date_list">
+	<table>
+		<thead>
+		<tr>
+			<td>类型</td>
+			<td>货币</td>
+			<td>时间</td>
+			<td>数量</td>
+			<td>价格</td>
+			<td>总价</td>
+		</tr>
+		</thead>
+
+		<tbody>
+
+		<volist name="list" id="arr">
+
+			<tr>
+				<if condition="$arr.types eq 1 ">
+					<td class="green_font">买入</td>
+					<else />
+					<td class="red_font">卖出</td>
+				</if>
+
+				<td>{$arr.currency_name}</td>
+				<td>{$arr.time}</td>
+				<td>{$arr.quantity}</td>
+				<if condition="$arr.types eq 1 ">
+					<td class="green_font">{$arr.money}</td>
+					<td class="green_font">{$arr.money_all}</td>
+					<else />
+					<td class="red_font">{$arr.money}</td>
+					<td class="red_font">{$arr.money_all}</td>
+				</if>
+			</tr>
+
+		</volist>
+		</tbody>
+	</table>
+</div>
+
+<include file="Common:menu"/>
+
+</body>
+
+
+<include file="Common:footer"/>
+<script type="text/javascript">
+
+	$("#show_more_coin").on('click',function(){
+		if($(".chose_coin").hasClass('on')){
+			$(".chose_coin").removeClass('on');
+		}else{
+			$(".chose_coin").addClass('on');
+		}
+	})
+
+</script>
+
+</html>

@@ -1,0 +1,122 @@
+<include file="Common:header"/>
+
+	<body class="has_menu has_header">
+
+	<volist name="currency" id="arr">
+		<div class="top_header">
+			<a class="back"><img src="__ROOT__/Public/oxc/img/back_icon.jpg"/></a>
+			<h3>{$arr.keyname} / {$arr.types}</h3>
+		</div>
+
+		<div class="top_deta">
+			<p class="deta1">{$arr.money}</p>
+			<div class="subdeta clearfix">
+				<span>≈¥ {$arr.money} </span>
+				<if condition="$arr.defloat gt 0 ">
+					<span class="green_font">+{$arr.defloat}%</span>
+					<else />
+					<span class="red_font">{$arr.defloat}%</span>
+				</if>
+			</div>
+			<a href="" class="bzzj"><img src="__ROOT__/Public/oxc/img/bzzl.jpg"/></a>
+			
+			<table>
+				<tr>
+					<td>
+						<p>24H成交量</p>
+						{$arr.sales_today}
+					</td>
+					<td>
+						<p>24H最高价</p>
+						{$arr.money_max}
+					</td>
+					<td>
+						<p>24H最低价</p>
+						{$arr.money_min}
+					</td>
+				</tr>
+			</table>
+		</div>
+	</volist>
+		
+		<div class="fssd">
+			<a href="javascript:;" class="on">分时</a>
+			<a href="javascript:;">深度</a>
+		</div>
+		
+		<div class="fssd_item clearfix">
+			<div class="item" style="display: block;">
+				<div class="imgbox">
+					<img src="__ROOT__/Public/oxc/img/line.jpg"/>
+				</div>
+			</div>
+			<div class="item">
+				<div class=" imgbox2">
+					<img src="__ROOT__/Public/oxc/img/lin2.jpg"/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="gap_title1 gap_title3" style="margin-top: .2rem;">
+			<img src="__ROOT__/Public/oxc/img/newst_icon.jpg">最新成交
+		</div>
+		
+		<div class="jy_date_list">
+			<table>
+				<thead>
+					<tr>
+						<td>时间</td>
+						<td>数量</td>
+						<td>价格</td>
+					</tr>
+				</thead>
+				<tbody>
+
+					<volist name="news" id="arr">
+
+						<tr>
+							<td>{$arr.time}</td>
+							<td>{$arr.quantity}</td>
+							<if condition="$arr.types eq 1 ">
+								<td class="green_font">{$arr.money}</td>
+								<else />
+								<td class="red_font">{$arr.money}</td>
+							</if>
+						</tr>
+
+					</volist>
+				</tbody>
+			</table>
+		</div>
+		
+		
+		<div class="bottom_menu bottom_buy_btn">
+			<table>
+				<tr>
+					<td>
+						<a  class="a_href" data-href="/home/Index/buy?hid={$hid}">买入</a>
+					</td>
+					<td>
+						<a  class="a_href" data-href="/home/Index/sale?hid={$hid}">卖出</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+	</body>
+
+	<include file="Common:footer"/>
+	<script type="text/javascript">
+		$(".fssd a").click(function(){
+			var this_index = $(this).index();
+			$(".fssd_item .item").hide();
+			$(".fssd_item .item").eq(this_index).show();
+			
+			$(".fssd a").removeClass('on');
+			
+			$(this).addClass('on');
+			
+		})
+	</script>
+
+</html>

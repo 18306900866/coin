@@ -1,0 +1,76 @@
+<include file="Common:header"/>
+
+
+<body class="has_menu has_header">
+
+<div class="top_header">
+    <a class="back"><img src="__ROOT__/Public/oxc/img/back_icon.jpg"/></a>
+    <h3>充值</h3>
+</div>
+
+
+
+
+
+<form name=alipayment action="/home/Index/apay" method="post" id="ff" >
+
+    <div class="form_input " style="margin-top: .2rem;">
+        <ul>
+            <li>
+                <p class="tl1">充值金额: <span style="color: red">单笔金额限制：200元-2000元</span></p>
+                <div class="inputbox">
+                    <input id="orderid" name="orderid" value="{$order}"   type="hidden" />
+
+                    <input type="text" id="money" name="money" style="color: white;" class="input" id="money" maxlength="5"  placeholder="请输入充值金额" value="200" />
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <button class="blue_btn pays" style="margin-top: 1rem;" type="submit">充值</button>
+
+
+</form>
+
+
+
+
+</body>
+
+<include file="Common:footer"/>
+
+<script type="text/javascript">
+    var f = document.getElementById('ff');
+
+    f.onsubmit = function (){
+        alert('目前仅支持微信扫码付款！');
+        return true;
+        alert('充值通道维护中，充值请联系在线客服！');
+        var money=$('#money').val();
+        money = parseInt(money);
+
+        if ( money < 200){
+            alert('起充金额200元');
+            return false;
+        }else if ( money > 2000){
+            alert('最大充值金额2000元');
+            return false;
+        }else {
+            //可以提交表单
+            return true;
+        }
+
+
+    }
+
+    // $('input').keyup(function () {
+    //     var c = $(this);
+    //     if (/[^\d]/.test(c.val())) {//替换非数字字符
+    //         var temp_amount = c.val().replace(/[^\d]/g, '');
+    //         $(this).val(temp_amount);
+    //     }
+    // })
+
+</script>
+
+</html>
