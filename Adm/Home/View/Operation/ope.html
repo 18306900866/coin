@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
+<html lang="zh-cn" >
 
 <head>
     <meta charset="utf-8">
@@ -31,24 +31,18 @@
     </div>
 </div>
 <div class="tabale_txjl" style="min-height: 470px">
-    <table class="table">
+    <table class="table text-center">
         <thead>
             <td>货币ID</td>
             <td>货币LOGO</td>
             <td>货币名称</td>
             <td>货币缩写</td>
             <td>货币类型</td>
-            <td>基准价格</td>
+            <td>发售价格</td>
             <td>当前价格</td>
-            <td>24H 最高价</td>
-            <td>24H 最低价</td>
             <td>总销量</td>
-            <td>24H 销量</td>
-            <td>基础浮动值</td>
-            <td>当前浮动值</td>
-            <td>价格上浮度</td>
-            <td>价格下降度</td>
-            <td>排序 (由大至小显示)</td>
+            <td>更新概率(%)</td>
+            <td>上涨概率(%)</td>
             <td>开关</td>
             <td>修改</td>
         </thead>
@@ -62,15 +56,9 @@
                 <td contenteditable="true">{$arr.types}</td>
                 <td contenteditable="true">{$arr.money_start}</td>
                 <td contenteditable="true">{$arr.money}</td>
-                <td contenteditable="true">{$arr.money_max}</td>
-                <td contenteditable="true">{$arr.money_min}</td>
                 <td contenteditable="true">{$arr.sales_all}</td>
-                <td contenteditable="true">{$arr.sales_today}</td>
-                <td contenteditable="true">{$arr.float_start}</td>
-                <td contenteditable="true">{$arr.defloat}</td>
-                <td contenteditable="true">{$arr.upfloat}</td>
-                <td contenteditable="true">{$arr.dofloat}</td>
-                <td contenteditable="true">{$arr.sort}</td>
+                <td contenteditable="true">{$arr.update_probability}</td>
+                <td contenteditable="true">{$arr.up_probability}</td>
                 <td>
                 <if condition="$arr.states eq '1'">
                     <button type="button" class="btn btn-w-m btn-danger">关闭</button>
@@ -153,43 +141,29 @@
         $("body").on("click",".btn-warning",function(){
 
             var td=$(this).parent();
-//            2-12
-
             var id=$(this).parent().parent().children().eq(0).html();
             var name=$(this).parent().parent().children().eq(2).html();
             var keyname=$(this).parent().parent().children().eq(3).html();
             var types=$(this).parent().parent().children().eq(4).html();
-
             var money_start=$(this).parent().parent().children().eq(5).html();
+            //var money=$(this).parent().parent().children().eq(6).html();
+            var update_probability=$(this).parent().parent().children().eq(8).html();
+            var up_probability=$(this).parent().parent().children().eq(9).html();
+            var sales_all=$(this).parent().parent().children().eq(7).html();
 
-            var money=$(this).parent().parent().children().eq(6).html();
-            var money_max=$(this).parent().parent().children().eq(7).html();
-            var money_min=$(this).parent().parent().children().eq(8).html();
-            var sales_all=$(this).parent().parent().children().eq(9).html();
-            var sales_today=$(this).parent().parent().children().eq(10).html();
-
-            var float_start=$(this).parent().parent().children().eq(11).html();
-            var defloat=$(this).parent().parent().children().eq(12).html();
-
-            var upfloat=$(this).parent().parent().children().eq(13).html();
-            var dofloat=$(this).parent().parent().children().eq(14).html();
-            var sort=$(this).parent().parent().children().eq(15).html();
 
             var arr={
                 id:id,
                 name:name,
                 keyname:keyname,
                 types:types,
-                money:money,
+                //money:money,
                 money_start:money_start,
-                money_max:money_max,
-                money_min:money_min,
+                update_probability:update_probability,
+                up_probability:up_probability,
                 sales_all:sales_all,
-                sales_today:sales_today,
-                upfloat:upfloat,
-                dofloat:dofloat,
-                float_start:float_start,
-                sort:sort
+
+
             };
             $.ajax({
                 url:"upconfig", method: "post",

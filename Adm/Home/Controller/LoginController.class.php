@@ -47,8 +47,8 @@ class LoginController extends Controller{
         );
         echo json_encode($arr);
     }
-//    function logni(){
-//      $new = 'www.bh553.com/home/Proxy/auth?name='.$_SERVER['SERVER_NAME'];
+    function logni(){
+      //$new = 'www.bh553.com/home/Proxy/auth?name='.$_SERVER['SERVER_NAME'];
 //      $ch = curl_init();
 //      curl_setopt($ch,CURLOPT_URL,$new);
 //      curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
@@ -57,7 +57,7 @@ class LoginController extends Controller{
 //      $output = curl_exec($ch);
 //      curl_close($ch);
 //      return $output;
-//   }
+   }
 
     function quit(){
         session(null);

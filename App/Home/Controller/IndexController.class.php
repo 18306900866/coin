@@ -18,7 +18,7 @@ class IndexController extends Controller {
         $img_where['state'] = '1';
         $data['img'] = M('config') -> where($img_where) -> field('id,img,url') -> select();
         $hb_where['states'] = '1';
-        $data['currency'] = M('currency') -> where($hb_where) -> field('id,img,keyname,types,sales_all,money,defloat') -> order('sort desc') -> select();
+        $data['currency'] = M('currency') -> where($hb_where) -> field('money_start,id,img,keyname,types,sales_all,money,defloat') -> order('sort desc') -> select();
         $this -> assign('img', $data['img']);
         $this -> assign('currency', $data['currency']);
         $this -> assign('list', $data);
@@ -27,7 +27,7 @@ class IndexController extends Controller {
     // 数据刷新
     function ajaxcurrency() {
         $hb_where['states'] = '1';
-        $data = M('currency') -> where($hb_where) -> field('id,img,keyname,types,sales_all,money,defloat') -> order('sort desc') -> select();
+        $data = M('currency') -> where($hb_where) -> field('id,money_start,img,keyname,types,sales_all,money,defloat') -> order('sort desc') -> select();
         echo json_encode(array('data' => $data, 'sum' => count($data)));
     }
     // 货币详细信息表

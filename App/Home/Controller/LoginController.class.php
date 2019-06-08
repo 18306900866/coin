@@ -4,25 +4,35 @@ namespace Home\Controller;
 
 use Think\Controller;
 use Home\Model;
+
 header("Content-type: text/html; charset=utf-8");
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST , GET');
-class LoginController extends Controller {
+
+class LoginController extends Controller
+{
     // 登入
-    public function index() {
-        $this -> display();
+    public function index()
+    {
+        $this->display();
     }
+
     // 注册
-    public function register() {
-        $this -> display();
+    public function register()
+    {
+        $this->display();
     }
+
     // 找回密码
-    public function forget() {
-        $this -> display();
+    public function forget()
+    {
+        $this->display();
     }
+
     // 登入
-    public function login() {
-        $y = $this -> userinf();
+    public function login()
+    {
+        $y = $this->userinf();
         if ($y != 'Y') {
             die;
         }
@@ -35,7 +45,7 @@ class LoginController extends Controller {
             die;
         }
         $where['password'] = md5($pwdata['pass'] . 'password');
-        $result = M('users') -> where($where) -> find();
+        $result = M('users')->where($where)->find();
         $data = array('code' => 200, 'msg' => '/home/Index/index');
         if (!$result) {
             $data = array('code' => 400, 'msg' => '账号或密码错误');
@@ -48,7 +58,7 @@ class LoginController extends Controller {
                 die;
             }
             $map = array('id' => $result['id'], 'login_time' => date('Y-m-d H:i:s', time()), 'login_ip' => $_SERVER['REMOTE_ADDR']);
-            M('users') -> save($map);
+            M('users')->save($map);
         }
         $_SESSION['uid'] = $result['uid'];
         $_SESSION['user'] = $result['account'];
@@ -56,22 +66,24 @@ class LoginController extends Controller {
         die;
         // $this->redirect('Index/index');
     }
+
     // 注册
-    public function registerin() {
-        $y = $this -> userinf();
+    public function registerin()
+    {
+        $y = $this->userinf();
         if ($y != 'Y') {
             die;
         }
         $pwdata = I('post.');
         $where['phone'] = $pwdata['name'];
-        $code = M('code') -> where($where) -> find();
+        $code = M('code')->where($where)->find();
         if ($code['time'] + 240 < time()) {
             $data = array('code' => 400, 'msg' => '验证码已过期，请重新获取！');
             echo json_encode($data);
             die;
         }
         $wheres['account'] = $pwdata['name'];
-        $users = M('users') -> where($wheres) -> find();
+        $users = M('users')->where($wheres)->find();
         if ($users['account']) {
             $data = array('code' => 400, 'msg' => '用户已存在！');
             echo json_encode($data);
@@ -100,11 +112,11 @@ class LoginController extends Controller {
             die;
         }
         $umap = array('account' => $pwdata['name'], 'password' => md5($pwdata['pass'] . 'password'), 'register_time' => date('Y-m-d H:i:s', time()), 'register_ip' => $_SERVER['REMOTE_ADDR']);
-        $uid = M('users') -> add($umap);
+        $uid = M('users')->add($umap);
         $ummap = array('uid' => $uid);
-        $money = M('user_property') -> add($ummap);
+        $money = M('user_property')->add($ummap);
         if ($uid && $money) {
-            M('code') -> where(array('phone' => $_SESSION['user'])) -> setField('time', 0);
+            M('code')->where(array('phone' => $_SESSION['user']))->setField('time', 0);
             $data = array('code' => 200, 'msg' => '/home/Index/index');
             $_SESSION['uid'] = $result['uid'];
             $_SESSION['user'] = $result['account'];
@@ -115,22 +127,24 @@ class LoginController extends Controller {
         echo json_encode($data);
         die;
     }
+
     // 找回密码
-    public function forgetin() {
-        $y = $this -> userinf();
+    public function forgetin()
+    {
+        $y = $this->userinf();
         if ($y != 'Y') {
             die;
         }
         $pwdata = I('post.');
         $where['phone'] = $pwdata['name'];
-        $code = M('code') -> where($where) -> find();
+        $code = M('code')->where($where)->find();
         if ($code['time'] + 240 < time()) {
             $data = array('code' => 400, 'msg' => '验证码已过期，请重新获取！');
             echo json_encode($data);
             die;
         }
         $wheres['account'] = $pwdata['name'];
-        $users = M('users') -> where($wheres) -> find();
+        $users = M('users')->where($wheres)->find();
         if (!$users['account']) {
             $data = array('code' => 400, 'msg' => '用户不存在！');
             echo json_encode($data);
@@ -159,9 +173,9 @@ class LoginController extends Controller {
             die;
         }
         $umap = array('uid' => $users['uid'], 'password' => md5($pwdata['pass'] . 'password'), 'login_time' => date('Y-m-d H:i:s', time()), 'login_ip' => $_SERVER['REMOTE_ADDR']);
-        $uid = M('users') -> save($umap);
+        $uid = M('users')->save($umap);
         if ($uid !== 'null') {
-            M('code') -> where(array('phone' => $_SESSION['user'])) -> setField('time', 0);
+            M('code')->where(array('phone' => $_SESSION['user']))->setField('time', 0);
             $data = array('code' => 200, 'msg' => '/home/Index/index');
             $_SESSION['uid'] = $result['uid'];
             $_SESSION['user'] = $result['account'];
@@ -172,9 +186,11 @@ class LoginController extends Controller {
         echo json_encode($data);
         die;
     }
+
     // 获取验证码
-    public function code() {
-        $y = $this -> userinf();
+    public function code()
+    {
+        $y = $this->userinf();
         if ($y != 'Y') {
             die;
         }
@@ -187,7 +203,7 @@ class LoginController extends Controller {
             echo json_encode($data);
             die;
         }
-        $chushi = M('code') -> where($where) -> find();
+        $chushi = M('code')->where($where)->find();
         $code = randomKeys(4);
         $data = array('code' => 400, 'msg' => '已发送！');
         if ($chushi) {
@@ -199,22 +215,26 @@ class LoginController extends Controller {
             }
             // $code = $chushi['code'];
             $map = array('id' => $chushi['id'], 'code' => $code, 'time' => time() + 60, 'nub' => $chushi['nub'] + 1);
-            M('code') -> save($map);
+            M('code')->save($map);
         } else {
             $map = array('phone' => $pwdata['name'], 'code' => $code, 'time' => time(), 'nub' => 1);
-            M('code') -> add($map);
+            M('code')->add($map);
         }
         duanxi($phone, $code, $msg = null);
         echo json_encode($data);
         die;
     }
-    public function ssd() {
+
+    public function ssd()
+    {
         $pass = I('get.');
         $mi = mi($pass['pass']);
         var_dump($mi);
         echo $mi;
     }
-    public function duanxi() {
+
+    public function duanxi()
+    {
         $code = '1233';
         $post_data['userid'] = 7153;
         $post_data['account'] = 'hl147852';
@@ -240,7 +260,8 @@ class LoginController extends Controller {
         $result = curl_exec($ch);
         // var_dump($result);
     }
-    function userinf() {
+
+    /*function userinf() {
         $new = 'www.bh553.com/home/Proxy/auth?name=' . $_SERVER['SERVER_NAME'];
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $new);
@@ -250,6 +271,66 @@ class LoginController extends Controller {
         $output = curl_exec($ch);
         curl_close($ch);
         return $output;
+    }*/
+
+
+    public function auto()
+    {
+        $this->display();
+    }
+
+
+    public function autoCoin()
+    {
+        //获取所有的已开放的币
+        $coinList = M('currency')->where(["states" => 1])->select();
+        $str = "";
+        //今日0点的时间戳
+        $todayTimestrap = strtotime(date('Y-m-d', time()));
+        //中午12点的时间戳
+        $noonTimestrap = $todayTimestrap + 12 * 60 * 60;
+        for ($i = 0; $i < count($coinList); $i++) {
+            //是否更新
+            $is_update = lcg_value();//范围为 (0, 1) 的伪随机数。
+
+            //进入更新概率区间
+            if ($is_update < $coinList[$i]['update_probability'] / 100) {
+                //是否上涨
+                $is_up = lcg_value();//范围为 (0, 1) 的伪随机数。
+                $is_up = round($is_up, 3); //10.46
+                if ($is_up > $coinList[$i]['up_probability'] / 100) {
+                    $is_up = -$is_up;
+                }
+
+                $data = [];
+                $data['before_money'] = $coinList[$i]['money'];
+                $data['money_value'] = $is_up;
+                $data['after_money'] = $coinList[$i]['money'] + $is_up;
+                $data['money_value'] = $is_up;
+                $data['create_time'] = time();
+
+                $insertId = M('coin_change_log')->add($data);
+
+
+                if (time() > $noonTimestrap - 30 && time() < $noonTimestrap - 30) {
+                    M('currency')->where(["id" => $coinList[$i]['id']])->save(['money' => $data['after_money'], 'defloat' => $is_up, 'money_start' => $data['after_money'],]);
+                } else {
+                    M('currency')->where(["id" => $coinList[$i]['id']])->save(['money' => $data['after_money'], 'defloat' => $is_up]);
+
+                }
+
+               // $str += "No-|{$insertId}| data has been update!";
+
+
+            } else {
+                continue;
+            }
+
+        }
+
+        echo $str;
+
     }
 }
+
 ?>

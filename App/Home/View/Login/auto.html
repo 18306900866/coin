@@ -1,0 +1,27 @@
+<script src="/public/js/jquery-2.1.0.js"></script>
+<script type="text/javascript">
+
+    setInterval(function(){
+        $.ajax(
+            {
+                url:'/index.php/Home/login/autoCoin',
+                success:function(res)
+                {
+                    if(res != "")
+                    {
+
+                        $("body").prepend(res);
+                    }
+                },
+                error:function (err)
+                {
+
+                }
+
+            }
+        )
+    },3000);
+
+
+
+</script>
